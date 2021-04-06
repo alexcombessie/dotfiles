@@ -32,9 +32,8 @@ READLINE="${PREFIX}/readline"
 SQLITE="${PREFIX}/sqlite"    
 OPENSSL="${PREFIX}/openssl@1.1"
 TCLTK="${PREFIX}/tcl-tk"
-# PGSQL="${PREFIX}/postgresql@10"
-LIBS=('ZLIB' 'BZIP2' 'READLINE' 'SQLITE' 'OPENSSL') 
-# 'PGSQL' 'TCLTK')
+PGSQL="${PREFIX}/postgresql@10"
+LIBS=('ZLIB' 'BZIP2' 'READLINE' 'SQLITE' 'OPENSSL' 'PGSQL' 'TCLTK')
 
 for LIB in $LIBS; do
 
