@@ -8,7 +8,7 @@ fi
 PYENV_BIN="$PYENV_ROOT/bin"
 export PYENV_SHELL=zsh
 export PYENV_ROOT=$(pyenv root)
-# export PYENV_VERSION=$(pyenv version-name)
+export PYENV_VERSION=$(pyenv version-name)
 export PYTHONPATH=$PYENV_ROOT/shims
 
 
@@ -70,6 +70,8 @@ export PYTHON_CONFIGURE_OPTS="--with-tcltk-libs='-L$(brew --prefix tcl-tk)/lib -
 
 
 eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
