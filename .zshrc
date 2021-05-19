@@ -2,8 +2,10 @@
 ARCH=`arch`
 if [[ "${ARCH}"  == "arm64" ]]; then
     export PYENV_ROOT="${HOME}/.pyenv/arm64"
+	export POETRY_HOME="${HOME}/.poetry/arm64"
 else
     export PYENV_ROOT="${HOME}/.pyenv/rosetta"
+	export POETRY_HOME="${HOME}/.poetry/rosetta"
 fi
 PYENV_BIN="$PYENV_ROOT/bin"
 export PYENV_SHELL=zsh
@@ -31,7 +33,9 @@ SQLITE="${PREFIX}/sqlite"
 OPENSSL="${PREFIX}/openssl@1.1"
 TCLTK="${PREFIX}/tcl-tk"
 PGSQL="${PREFIX}/postgresql@10"
-LIBS=('ZLIB' 'BZIP2' 'READLINE' 'SQLITE' 'OPENSSL' 'PGSQL' 'TCLTK')
+LLVM9="${PREFIX}/llvm@9"
+LIBFFI="${PREFIX}/libffi"
+LIBS=('ZLIB' 'BZIP2' 'READLINE' 'SQLITE' 'OPENSSL' 'PGSQL' 'TCLTK', 'LLVM9', 'LIBFFI')
 
 for LIB in $LIBS; do
 
@@ -76,3 +80,11 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Add Visual Studio Code (code)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+export PATH="${POETRY_HOME}/bin:$PATH"
+
+export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
+export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
+
+export OPENBLAS=$(brew --prefix openblas)
+export CFLAGS="-falign-functions=8 ${CFLAGS}"
