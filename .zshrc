@@ -33,9 +33,9 @@ SQLITE="${PREFIX}/sqlite"
 OPENSSL="${PREFIX}/openssl@1.1"
 TCLTK="${PREFIX}/tcl-tk"
 PGSQL="${PREFIX}/postgresql@10"
-LLVM9="${PREFIX}/llvm@9"
 LIBFFI="${PREFIX}/libffi"
-LIBS=('ZLIB' 'BZIP2' 'READLINE' 'SQLITE' 'OPENSSL' 'PGSQL' 'TCLTK', 'LLVM9', 'LIBFFI')
+# LLVM9="${PREFIX}/llvm@9"
+LIBS=('ZLIB' 'BZIP2' 'READLINE' 'SQLITE' 'OPENSSL' 'PGSQL' 'TCLTK', 'LIBFFI') # 'LLVM9'
 
 for LIB in $LIBS; do
 
@@ -88,3 +88,11 @@ export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
 
 export OPENBLAS=$(brew --prefix openblas)
 export CFLAGS="-falign-functions=8 ${CFLAGS}"
+
+export GISKARD_ML_WORKER_HOST=localhost
+export GISKARD_ML_WORKER_PORT=50051
+
+export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/python@3.7/lib"
+export PKG_CONFIG_PATH="/usr/local/opt/python@3.7/lib/pkgconfig"
+alias python=python3
